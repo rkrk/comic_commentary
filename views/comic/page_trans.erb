@@ -1,0 +1,19 @@
+<h2 class="pageTitle"> TranPages List</h2>
+<link rel="stylesheet" type="text/css" href="/trans/<%= @comic_name%>/<%= @vol%>/<%= @page %>.css">
+<div id="content">
+	<!-- <%=@comic_path %><br> -->
+	<!-- <%=@translate_path %><br> -->
+	<!-- <img src="/pic/<%= @comic_name%>/<%= @vol %>/<%= @page %>"/> -->
+	<!-- <img src="/pic/one/128/tester1.png" ><img src="/pic/one/128/tester2.png" > -->
+
+	
+	<p></p><br>
+	<p></p><br>
+
+	<% if File.exist? (@translate_path+".erb") %>
+		<%File.open(@translate_path+".erb").each do |l|%>
+			<%= l %>
+		<% end %>
+	<% end %>
+	</div>
+</div>

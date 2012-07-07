@@ -1,0 +1,8 @@
+
+<h2 class="pageTitle"> Vols List</h2>
+<div id="content">
+	<h3><%=@comic_name%></h3>
+	<% @vols.each do |v| %>
+		<h4><a href="/comic/<%= @comic_name %>/<%= v %>"><%= v %></a></h4>
+	<% end %>
+</div>

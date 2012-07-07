@@ -1,0 +1,26 @@
+
+<h1 class="pageTitle"> Translate Status </h1>
+
+<div class="row" >
+
+	<h2>Target Vol</h2>
+	<p><%=@comic_name%> - <%=@vol%> </p>
+
+	<hr>
+
+	<h2> Page Translate Status </h2>
+	<table class="table table-striped table-condensed">
+		<tr> <td>#</td> <td>page</td> <td>status</td> </tr>
+		<% @trans_status.each_index do |i| %>
+			<% page,ts = @trans_status[i] %>
+			<tr>
+				<td><%= i + 1 %></td>
+				<td> <a href= <%= "/trans/#{@comic_name}/#{@vol}/#{page}" %> ><%= page %></a> </td>
+				<td><%= ts == 1 ? "Done" : "Not yet "  %></td>
+			</tr>
+		<% end %>
+	</table>
+
+	<hr>
+
+</div>
