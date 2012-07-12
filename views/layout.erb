@@ -41,7 +41,7 @@
 
 		<!-- <div class='span6 offset3' id='page_header'><a href='/home'><img src='/title.png'></a></div> -->
 
-      	<div class="hero-unit">
+      	<div id="content" class="hero-unit">
       		<%= yield %>
     	</div>
 
@@ -64,8 +64,10 @@
         </div>
       </div> -->
 
-		
+	
+
 		<hr>
+
 		<footer>Copyright &copy;<a href='http://csl.org'/>CSL</a> 2012</footer>
 
 	</body>
@@ -73,7 +75,7 @@
 	<!-- asdf -->
     <script src="/js/jquery-1.7.2.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-<!--     <script src="/js/bootstrap-transition.js"></script>
+<!--<script src="/js/bootstrap-transition.js"></script>
     <script src="/js/bootstrap-alert.js"></script>
     <script src="/js/bootstrap-modal.js"></script>
     <script src="/js/bootstrap-dropdown.js"></script>
@@ -85,26 +87,34 @@
     <script src="/js/bootstrap-collapse.js"></script>
     <script src="/js/bootstrap-carousel.js"></script>
     <script src="/js/bootstrap-typeahead.js"></script> -->
-    		<script type="text/javascript">
-			$(document).ready(function(){
-				$(document).mousemove(function(e){
-		    	$('#status').html(e.pageX +', '+ e.pageY);
-				}); 
-			})
-			</script>
-			<script type="text/javascript">
-			$(document).ready(function(){
-			   $("#image").click(function(e){
-			   		$('#status2').html(e.pageX,e.pageY);
-			   		$('#cood-x').html(e.pageX);
-			   		$('#cood-y').html(e.pageY);
-			   		// $('#cood-y').value(e.pageY);
-			   }); 
-			})
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).mousemove(function(e){
+	    	$('#status').html(e.pageX +', '+ e.pageY);
+			}); 
+		})
+		</script>
+
+		<script type="text/javascript">
+		$(document).ready(function(){
+		   $("#image").click(function(e){
+		   		$('#cood-x').val(e.pageX);
+		   		$('#cood-y').val(e.pageY);
+		   		// $('#cood-y').value(e.pageY);
+		   }); 
+		})
 		</script>
 		<script type="text/javascript">
-			$('#pic-width').html($('img').width());
-			$('#pic-height').html($('img').height());
+		    $("#feed").click(function () {
+		    	var x = $("#cood-x").val()-202;
+		    	var y = $("#cood-y").val()-216;
+		    	$("#cood-x-fix").val(x);
+				$("#cood-y-fix").val(y);
+		    });
+		</script>
+		<script type="text/javascript">
+			$('#pic-width').val($('img').width());
+			$('#pic-height').val($('img').height());
 		</script>
 
 </html>

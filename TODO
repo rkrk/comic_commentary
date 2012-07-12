@@ -1,0 +1,9 @@
+1.在非/comic/* 页面，不显示control panel。 =>done
+1-1.play_list编辑页面->50%
+1-2.Title编辑页面
+
+2.在trans_detail页面，对象图片既存erb/css文件时，读入
+3.erb/css文件格式改为json，通过jquery解析json文件达到与erb/css同样的效果
+4.在各个页面加广告栏
+5.实现注册功能（提交注册信息->邮件确认->完成注册）
+

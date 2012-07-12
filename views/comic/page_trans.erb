@@ -1,19 +1,31 @@
 <h2 class="pageTitle"> TranPages List</h2>
-<link rel="stylesheet" type="text/css" href="/trans/<%= @comic_name%>/<%= @vol%>/<%= @page %>.css">
-<div id="content">
-	<!-- <%=@comic_path %><br> -->
-	<!-- <%=@translate_path %><br> -->
-	<!-- <img src="/pic/<%= @comic_name%>/<%= @vol %>/<%= @page %>"/> -->
-	<!-- <img src="/pic/one/128/tester1.png" ><img src="/pic/one/128/tester2.png" > -->
-
-	
-	<p></p><br>
-	<p></p><br>
-
-	<% if File.exist? (@translate_path+".erb") %>
-		<%File.open(@translate_path+".erb").each do |l|%>
-			<%= l %>
-		<% end %>
+<link rel="stylesheet" type="text/css" href="/trans/content/<%= @comic_name%>/<%= @vol%>/<%= @page %>.css">
+<% if File.exist? (@translate_path+".erb") %>
+	<%File.open(@translate_path+".erb").each do |l|%>
+		<%= l %>
 	<% end %>
-	</div>
+<% end %>
+
+
+<div class="control_panel navbar navbar-fixed-bottom">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Control Panel</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+            	<li><a href="/comic/<%=@comic_name%>"><i class="icon-eject icon-white"></i> Back</a></li>
+            	<li><a href="/comic/<%=@comic_name%>/<%=@vol%>/1"><i class="icon-fast-backward icon-white"></i> VolTop</a></li>
+            	<li><a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num.to_i == 1 ? 1 : @page_num.to_i-1%>"><i class="icon-step-backward icon-white"></i> PrePage</a></li>
+            	<li><a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num.to_i == @page_num_max ? @page_num_max : @page_num.to_i+1%>">NextPage <i class="icon-step-forward icon-white"></i></a></li>
+            	<li><a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num_max%>">VolEnd <i class="icon-fast-forward icon-white"></i></a></li>
+            	<li><a href="#"><i class=" icon-text-height icon-white"></i></a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
 </div>

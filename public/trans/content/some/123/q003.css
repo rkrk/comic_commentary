@@ -1,0 +1,22 @@
+   
+		#content{
+			font-family: 'Microsoft Yahei','Helvetica Neue','Helvetica','Arial','Lucida' 'Grande','sans-serif';
+			height: 1104px;
+		}#comment{
+			position: absolute;
+			width: 728px;
+			height: 1074px;
+			overflow: hidden;
+			background-image: url(/trans/pic/some/123/q003.png);
+			background-position: 0;
+			background-repeat: no-repeat;
+		}
+		#comment-1 {
+			position: absolute;
+			top: 79px;
+			left: 138px;
+			font-size: 1.2em;
+			text-align: left;
+			background-color:#FFF;
+			
+		}

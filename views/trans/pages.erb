@@ -19,6 +19,15 @@
 				<td><%= ts == 1 ? "Done" : "Not yet "  %></td>
 			</tr>
 		<% end %>
+
+		<tr> 
+			<td></td>
+			<td></td>
+			<form action="/trans/comit" method="POST">
+				<td class="span2"><input class="span2 btn btn-success" span="2" type="submit" value="Translate Commit"></td>
+			</form>
+
+		</tr>
 	</table>
 
 	<hr>

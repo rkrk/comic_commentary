@@ -1,0 +1,21 @@
+<h2 class="pageTitle"> Pages List</h2>
+<div id="content">
+	<h2>Play list</h2>
+	<h3><%=@comic_name%> - <%=@vol%></h3>
+	<table>
+		<tr>
+			<td>title</td>
+			<td>page_from</td>
+			<td>page_to</td>
+		</tr>
+	<% @play_list.each do |pl| %>
+		<!-- <%= pl %> -->
+		<% tilte,from,to = pl %>
+		<tr>
+			<td><a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=from%>"><%= tilte %></a></td>
+			<td><%= from %></td>
+			<td><%= to %></td>
+		</tr>
+	<% end %>
+	</table>
+</div>

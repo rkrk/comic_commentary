@@ -4,34 +4,38 @@
 
 	<h2>Target img</h2>
 	<div id="image">
-		<img id="image" src=<%="../../../pic/#{@comic_name}/#{@vol}/#{@page}.png"%>>
+		<!-- <img id="image" src="D:/rwork/comic_commentary/trans/pic/some/001/q001.png"> -->
+		<img id="image" src=<%="/trans/pic/#{@comic_name}/#{@vol}/#{@page}.png"%>
 	</div>
 
 	<hr>
-
+<div id="trans_aid"></div>
 	<h2> Translate Status - now - </h2>
 	<table class="table table-striped table-bordered table-condensed">
 		<tr> 
 			<td> Img attr</td>
-			<td></td> 
-			<td> <%= @@trans_a_page.img.to_s %></td>
+			<td colspan=2> <%= @@trans_a_page.img.to_s %></td>
 		</tr>
 		<% @@trans_a_page.trans_record.each_index do |i|%>
 			<tr>
 				<td> Trans record </td> 
 				<td> <%= i+1 %> </td> 
 				<td> <%= @@trans_a_page.trans_record[i].to_s %> </td>
+				<td> 
+					<a href="/trans/<%=@comic_name%>/<%=@vol%>/<%=@page%>/remove_record/<%=i%>"><i class="icon-remove"></i></a>
+				</td>
 			</tr>
 		<% end %>
 	</table>
 
 	<hr>
 
-	<h2>Translate aid </h2>
 	<div class="span10">
 
+	<h2 >Translate aid </h2>
 	<form action='/trans/set/img' method="POST" >
 		<table id="image_attr" class="table table-striped table-bordered table-condensed">
+
 			<tr>
 				<td>Comic Name</td>
 				<td>Vol</td>
@@ -45,15 +49,14 @@
 				<td><input class="span3" name="comic_name" type="text" value="<%=@comic_name%>"> </td>
 				<td><input class="span1" name="vol" type="text"value="<%=@vol%>"> </td>
 				<td><input class="span2" name="page" type="text" value="<%=@page%>"> </td>
-				<td id="pic-width"> </td>
-				<td id="pic-height"> </td>
+				<td><input class="span1" id="pic-width" name="width" type="text" value=""> </td>
+				<td><input class="span1" id="pic-height" name="height" type="text" value=""> </td>
 				<td><input class="span1" name="suffix" type="text" value="png"> </td>
 				<td><input class="span2 btn btn-primary" type="submit" value="SetImg"></td>
 			</tr>
 		</table>
 	</form>
 
-	<form action='/trans/add/transrecord' method="POST" >
 		<table id="trans_record_form" class="table table-striped table-bordered table-condensed">
 			<tr>
 				<td>Translate-Content</td>
@@ -61,23 +64,48 @@
 				<td>X</td>
 				<td>Y</td>
 				<td>text_align</td>
+				<td>text_aspect</td>
 			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><input class="span1" id="cood-x" name="x" type="text" value=""></td>
+				<td><input class="span1" id="cood-y" name="y"type="text" value=""></td>
+				<td></td>
+				<td><button id="feed" class="btn btn-primary">Fix Coordinate</button></td>
+				<td></td>
+			</tr>
+		<form action='/trans/add/transrecord' method="POST" >
 			<tr id="trans_record">
-				<td><input class="span5" name="content" type="text" value=""> </td>
-				<td><input class="span1" name="font_size" type="text" value=""> </td>
-				<td id="cood-x" > <input class="span1" name="x"></td>
-				<td id="cood-y" > <input class="span1" name="y"></td>
-				<td><input class="span1" name="text_align" type="text" value="left"> </td>
+				<td><textarea id="textarea"  class="span5" rows="2" name="content" type="text" value=""></textarea></td>
+				<td><input class="span1" name="font_size" type="text" value="1.2"> </td>
+				<td><input class="span1" id="cood-x-fix" name="x_fix" type="text" value=""></td>
+				<td><input class="span1" id="cood-y-fix" name="y_fix" type="text" value=""></td>
+				<td>
+					<!-- <input class="span1" name="text_align" type="text" value="left">  -->
+					<select class="span1" name="text_align">
+    					<option>left</option>
+    					<option>center</option>
+  						<option>right</option>
+  					</select>
+				</td>
+				<td>
+					<input type="radio" name="aspect" value="horizon" deault/>horizon
+					<input type="radio" name="aspect" value="vertical" /> vertical
+				</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
+				<td></td>
 				<td><input class="btn btn-primary" type="submit" value="Save TransRecord" > </td>
 			</tr>
-		</table>
-	</form>
+		</form>
+	</table>
+
 	
 		<table class="table" >
 			<tr> 
