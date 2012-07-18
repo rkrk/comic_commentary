@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html">
 		<title>CccT</title>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
-		<link rel="shortcut icon" href="/favicon.png">
+		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+		<link rel="shortcut icon" href="/favicon.ico">
 	    <style type="text/css">
 	      body {
 	        padding-top: 60px;
 	        padding-bottom: 40px;
 	      }
 	    </style>
-
+	    <link rel="canonical" href="http://ccct.org/">
 	</head>
 	
 	<body class="container">
@@ -31,10 +33,13 @@
 		              <li><a href="/comic">Comic List</a></li>
 		              <li><a href="/trans">Translate Job</a></li>
 		              <li><a href="/about">About</a></li>
-		              <li><a href="/login">Login</a></li>
-		              <li><a href="/logout">Logout</a></li>
 		            </ul>
-		          </div><!--/.nav-collapse -->
+		          	<ul class="nav pull-right">
+		           	  <li><a href="/login">Login</a></li>
+		              <li><a href="/logout">Logout</a></li>
+		              <li><a href="/regist">Regist</a></li>
+		            </ul>
+		           </div>
 		        </div>
 		      </div>
 		</div>
@@ -45,76 +50,15 @@
       		<%= yield %>
     	</div>
 
-      <!-- Example row of columns -->
-<!--       <div class="row">
-        <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details »</a></p>
-        </div>
-        <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details »</a></p>
-       </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details »</a></p>
-        </div>
-      </div> -->
-
-	
-
 		<hr>
 
-		<footer>Copyright &copy;<a href='http://csl.org'/>CSL</a> 2012</footer>
+		<footer>Copyright &copy;<a href='http://ccct.org'/>CCCT</a> 2012</footer>
 
 	</body>
 
 	<!-- asdf -->
     <script src="/js/jquery-1.7.2.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-<!--<script src="/js/bootstrap-transition.js"></script>
-    <script src="/js/bootstrap-alert.js"></script>
-    <script src="/js/bootstrap-modal.js"></script>
-    <script src="/js/bootstrap-dropdown.js"></script>
-    <script src="/js/bootstrap-scrollspy.js"></script>
-    <script src="/js/bootstrap-tab.js"></script>
-    <script src="/js/bootstrap-tooltip.js"></script>
-    <script src="/js/bootstrap-popover.js"></script>
-    <script src="/js/bootstrap-button.js"></script>
-    <script src="/js/bootstrap-collapse.js"></script>
-    <script src="/js/bootstrap-carousel.js"></script>
-    <script src="/js/bootstrap-typeahead.js"></script> -->
-		<script type="text/javascript">
-		$(document).ready(function(){
-			$(document).mousemove(function(e){
-	    	$('#status').html(e.pageX +', '+ e.pageY);
-			}); 
-		})
-		</script>
 
-		<script type="text/javascript">
-		$(document).ready(function(){
-		   $("#image").click(function(e){
-		   		$('#cood-x').val(e.pageX);
-		   		$('#cood-y').val(e.pageY);
-		   		// $('#cood-y').value(e.pageY);
-		   }); 
-		})
-		</script>
-		<script type="text/javascript">
-		    $("#feed").click(function () {
-		    	var x = $("#cood-x").val()-202;
-		    	var y = $("#cood-y").val()-216;
-		    	$("#cood-x-fix").val(x);
-				$("#cood-y-fix").val(y);
-		    });
-		</script>
-		<script type="text/javascript">
-			$('#pic-width').val($('img').width());
-			$('#pic-height').val($('img').height());
-		</script>
 
 </html>

@@ -1,9 +1,23 @@
-1.在非/comic/* 页面，不显示control panel。 =>done
-1-1.play_list编辑页面->50%
+1.在非/comic/* 页面，不显示control panel。 ->done
+1.1.play_list编辑页面->90%
+ 1.1.1 将play_list编辑页面放入 /trans/pages.erb中 ->80%:0717 ->done:0718
+  
 1-2.Title编辑页面
 
-2.在trans_detail页面，对象图片既存erb/css文件时，读入
+2.在trans_detail页面，对象图片既存erb/css文件时，读入并解析
 3.erb/css文件格式改为json，通过jquery解析json文件达到与erb/css同样的效果
 4.在各个页面加广告栏
 5.实现注册功能（提交注册信息->邮件确认->完成注册）
+ 5.1 基本注册功能（提交注册信息->完成注册） -> done:0717
 
+10.整理数据结构
+
+
+bug
+
+1.comment文字的位置问题 -> done:0717
+2.错误id/pw也能login问题 -> done:0717
+3.layout style : 
+ 3.1 loign/注册链接拉到导航条右侧 ->done:0717
+
+ 

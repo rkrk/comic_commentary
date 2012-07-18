@@ -1,3 +1,5 @@
+#coding: utf-8
+
 runtime_path = File.expand_path(File.dirname($0))
 model_path = runtime_path+ '/model'
 helper_path = runtime_path + '/helper'
@@ -38,6 +40,9 @@ PLAY_LIST_HOME = runtime_path + '/public/trans/play_list'
 @@trans_vols = {}
 @@trans_pages = {}
 @@trans_pages_trans_status = {}
+
+@@origin_x = nil
+@@origin_y = nil
 
 #------------------------init Variables ----------------------------------------
 #init Play_list
@@ -113,6 +118,7 @@ end
 before '/trans' do 
 	# if session[:session_id] 
 	init_trans_params
+	reload_trans_status
 
 	#Output inited @@params in debug log
 	@@log.debug("4. init @@trans_* params : ")
@@ -185,13 +191,11 @@ get '/comic/:comic_name/:vol/:page_num' do
 	@comic_name,@vol,@page_num = params[:comic_name],params[:vol],params[:page_num]
 
 	hash_key = "#{@comic_name}@#{@vol}"
-	@pages = @@play_list_top[hash_key][0]
+	@pages = JSON::parse(@@play_list_top[hash_key][0])
 	@play_list = @@play_list_top[hash_key][1]
 	@page_num_max = @pages.size
 
 	@page = @pages[@page_num.to_i - 1]
-
-
 
 	@comic_path = COMIC_HOME + "/" + @comic_name + "/" + @vol + "/" + @page
 	@translate_path = TRANS_HOME + "/" + @comic_name + "/" + @vol + "/" + @page
@@ -205,7 +209,7 @@ get '/about' do
 	erb :about
 end
 
-#------------------------Comic Trans/Edit Tool-----------------------------------------
+#------------------------login/out , regist-----------------------------------------
 
 get '/login' do 
 	erb :login
@@ -223,6 +227,20 @@ post '/logout' do
 	logout
 end
 
+get '/regist'do
+	erb :regist
+end
+
+#------------------------Comic Trans/Edit Tool-----------------------------------------
+
+post '/regist' do
+	if regist 
+		redirect '/login'
+	else
+		redirect back
+	end
+end
+
 get '/trans' do
 	# request.env.map { |e| e.to_s + "\n" }
 	need_auth do 
@@ -237,12 +255,41 @@ get '/trans/play_list' do
 	end
 end 
 
-get '/trans/play_list/remove/:index' do 
-	need_auth do 
-		@@play_list.play_list.delete_at params[:index]
+post '/trans/play_list/setbase' do
+	need_auth do
+		c_name,vol,p_total = params[:comic_name],params[:vol],params[:p_total]
+		@@play_list.comic_name = c_name
+		@@play_list.vol = vol
+		@@play_list.page_total = p_total
 		redirect back
 	end
 end
+
+post '/trans/play_list/addlist' do
+	need_auth do 
+		title,p_from,p_to = params[:title],params[:p_from],params[:p_to]
+		pl = [] << title << p_from << p_to
+		@@play_list.play_list << pl 
+		redirect back
+	end
+end
+
+get '/trans/play_list/remove/:index' do 
+	need_auth do 
+		@@play_list.play_list.delete_at params[:index].to_i
+		redirect back
+	end
+end
+
+post '/trans/play_list/setpages' do
+	need_auth do 
+		p params[:pages]
+		p params[:pages].class
+		@@play_list.pages=params[:pages]
+		redirect back
+	end
+end
+
 
 post '/trans/play_list/save' do
 	need_auth do
@@ -250,13 +297,11 @@ post '/trans/play_list/save' do
 
 		if @@play_list.play_list.size > 0 
 			comic_name,vol = @@play_list.comic_name,@@play_list.vol
-			save_dir = TRANS_HOME + "/#{play_list}" 
-			# file_name = "#{comic_name}-#{vol}.json"
 		else 
 			redirect back
 		end
 
-		if @@play_list.store(save_dir)
+		if @@play_list.store(PLAY_LIST_HOME)
 			@@play_list = nil
 			@@play_list = Comic.new
 
@@ -292,7 +337,8 @@ end
 
 get '/trans/:comic_name/:vol/:page' do 
 	# @trans_home = 
-	need_auth do 
+	need_auth do
+		@origin_x,@origin_y = @@origin_x,@@origin_y
 		@comic_name,@vol,@page = params[:comic_name],params[:vol],params[:page]
 		comic_dir = COMIC_HOME + "/" + @comic_name + "/" + @vol
 		trans_dir = TRANS_HOME + "/" + @comic_name + "/" + @vol
@@ -323,17 +369,20 @@ post '/trans/add/transrecord' do
 	con = params[:content]
 	font_s = params[:font_size]
 	x,y = params[:x_fix],params[:y_fix]
+	origin_x,origin_y = params[:origin_x],params[:origin_y]
 	t_align = params[:text_align]
 	aspect = params[:aspect]
 
 	tr = TransRecord.new(con,font_s,x,y,t_align,aspect)
 	@@trans_a_page.add_r(tr)
+	@@origin_x = origin_x
+	@@origin_y = origin_y
 
 	redirect back
 end
 
 post '/trans/save' do
-	@@trans_a_page.to_s
+	p @@trans_a_page.to_s
 
 	if @@trans_a_page.img 
 		img = @@trans_a_page.img
@@ -353,7 +402,6 @@ post '/trans/save' do
 	else
 		redirect back
 	end
-
 end
 
 post '/trans/clear' do 
@@ -378,7 +426,7 @@ post '/trans/comit' do
 
 	# init comics/vols
 	@@play_list_top.keys.each do |key|
-		p key 
+		# key 
 		c,v = key.split("@")
 		@@comics << c
 		@@vols.has_key?(c) ? (@@vols[c] << v) : (@@vols.store c,[v])

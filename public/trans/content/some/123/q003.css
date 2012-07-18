@@ -13,10 +13,19 @@
 		}
 		#comment-1 {
 			position: absolute;
-			top: 79px;
-			left: 138px;
+			top: 216px;
+			left: 14px;
 			font-size: 1.2em;
 			text-align: left;
+			background-color:#FFF;
+			
+		}
+		#comment-2 {
+			position: absolute;
+			top: 965px;
+			left: 186px;
+			font-size: 1.5em;
+			text-align: right;
 			background-color:#FFF;
 			
 		}

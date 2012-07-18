@@ -1,3 +1,5 @@
+#coding: utf-8
+
 require 'json'
 require 'date'
 
@@ -58,9 +60,10 @@ class Comic
 		@play_list << [title.downcase,page_from,page_to]
 	end
 
-	def store(path="./")
+	def store(path=".")
+		p path
 		file_name = "#{@comic_name}-#{@vol}.json"
-		file_path = path + file_name
+		file_path = path + "/" + file_name
 
 		open(file_path, "w+") do |io|
 			JSON.dump(self.to_json, io)

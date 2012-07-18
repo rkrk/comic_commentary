@@ -13,19 +13,9 @@
 		}
 		#comment-1 {
 			position: absolute;
-			top: 138px;
-			left: 582px;
-			font-size: 1.2em;
-			text-align: left;
-			background-color:#FFF;
-			width: 1em;
-	    letter-spacing: 1.25em; /* arbitrarily large letter-spacing for safety */
-		}
-		#comment-2 {
-			position: absolute;
-			top: 80px;
-			left: 90px;
-			font-size: 1.2em;
+			top: 968px;
+			left: 184px;
+			font-size: 1.5em;
 			text-align: left;
 			background-color:#FFF;
 			

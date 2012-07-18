@@ -1,35 +1,142 @@
 
-<h1 class="pageTitle"> Translate Status </h1>
+<h2 class="pageTitle"> Translate Status </h2>
 
-<div class="row" >
+<h3>Target - Vol </h3>
+<p><%=@comic_name%> - <%=@vol%> </p>
 
-	<h2>Target Vol</h2>
-	<p><%=@comic_name%> - <%=@vol%> </p>
+<hr>
 
-	<hr>
+<h3>play list - Now -</h3>
+<table class="table table-striped table-bordered table-condensed">
+	<tr> 
+		<th class="span2"> PlayList Base</th>
+		<td colspan=4> <%= @@play_list %></td>
+	</tr>
+	<tr> 
+		<th> Pages</th>
+		<td colspan=4> <%= @@play_list.pages.to_s %></td>
+	</tr>
+	<tr>
+		<th> # </th>
+		<th class="span6"> PlayList Title </th> 
+		<th class="span1"> from </th> 
+		<th class="span1"> to </th>
+		<th class="span1"> </th>
+	</tr>
 
-	<h2> Page Translate Status </h2>
-	<table class="table table-striped table-condensed">
-		<tr> <td>#</td> <td>page</td> <td>status</td> </tr>
-		<% @trans_status.each_index do |i| %>
-			<% page,ts = @trans_status[i] %>
-			<tr>
-				<td><%= i + 1 %></td>
-				<td> <a href= <%= "/trans/#{@comic_name}/#{@vol}/#{page}" %> ><%= page %></a> </td>
-				<td><%= ts == 1 ? "Done" : "Not yet "  %></td>
-			</tr>
-		<% end %>
+	<% @@play_list.play_list.each_index do |i|%>
+	<tr>
+		<td ><%= i+1 %></td>
+		<td><%= @@play_list.play_list[i][0] %></td>
+		<td><%= @@play_list.play_list[i][1] %></td>
+		<td><%= @@play_list.play_list[i][2] %></td>
+		<td>
+			<a href="/trans/play_list/remove/<%=i%>"><i class="icon-remove"></i></a>
+		</td>
+	</tr>
+	<% end %>
+</table>
 
-		<tr> 
-			<td></td>
-			<td></td>
-			<form action="/trans/comit" method="POST">
-				<td class="span2"><input class="span2 btn btn-success" span="2" type="submit" value="Translate Commit"></td>
-			</form>
+<hr>
 
-		</tr>
-	</table>
+<h3>PlayList base</h3>
+<table>
+<form action="/trans/play_list/setbase" method="POST">
+	<tr>
+		<th>Comic name</th>
+		<th>Vol</th>
+		<th>Page num(totle)</th>
+		<th></th>
+	</tr>
+	<tr>
+		<td> <input type="text" name="comic_name" value="<%=@comic_name%>"></td>
+		<td> <input type="text" name="vol" value="<%=@vol%>"></td>
+		<td> <input type="text" name="p_total" value="<%=@@trans_pages.values.flatten.size %>"></td>
+		<td> <input class="span2 btn btn-primary" span="1" type="submit" value="set base"></td>
+	</tr>
+</form>
+</table>
 
-	<hr>
+<hr>
 
-</div>
+<h3>Add List</h3>
+<table>
+<form action="/trans/play_list/addlist" method="POST">
+	<tr>
+		<th class="span2">Title</th>
+		<th>Page from</th>
+		<th>Page to</th>
+	</tr>
+	<tr>
+		<td> <input type="text" name="title" value=""></td>
+		<td> <input type="text" name="p_from" value=""></td>
+		<td> <input type="text" name="p_to" value=""></td>
+		<td> <input class="span2 btn btn-primary" type="submit" value="add pl"></td>
+	</tr>
+</form>
+</table>
+
+<hr>
+
+<h3> Page Translate Status </h3>
+
+<!-- <%= @trans_status %> -->
+
+<table class="table table-striped table-condensed">
+	<form action="/trans/play_list/setpages" method="POST">
+	<tr class="data-detail">
+		<td class="span8">
+			<input type="text" name="pages" value=<%= @@trans_pages.values.flatten.to_json%>>
+<!-- 			<textarea type="text" class="span4" rows="2" name="pages" value="">
+				<%= @trans_status.to_json.strip %>
+			</textarea> -->
+		</td>
+		<td>
+			<input class="span2 btn btn-primary" type="submit" value="set pages">
+		</td>
+	</tr>
+	</form>
+</table>
+
+<table class="table table-striped table-condensed">
+	<tr> 
+		<th class="span1">#</th> 
+		<th>page</th> 
+		<th>status</th> 
+	</tr>
+	<% @trans_status.each_index do |i| %>
+	<% page,ts = @trans_status[i] %>
+	<tr>
+		<td><input class="span1" type="text" name="page_no" value="<%= i+1 %>"/></td>
+		<td><a href= <%= "/trans/#{@comic_name}/#{@vol}/#{page}" %> ><%= page %></a> </td>
+		<td><%= ts == 1 ? "Done" : "Not yet "  %></td>
+	</tr>
+	<% end %>
+</table>
+
+<hr>
+
+<table class="table table-condensed" >
+	<tr> 
+		<form action="/trans/play_list/clear" method="POST">  
+		<td><input class="span2 btn btn-warning" type="submit" value="Clear"></td>  
+		</form>
+		<td class="span4"></td>
+		<td class="span3"></td>
+		<form action="/trans/play_list/save" method="POST">
+		<td><input class="btn btn-success" type="submit" value="Save PlayList"/></td>
+		</form>
+	</tr>
+	<tr> 
+		<td></td>
+		<td></td>
+		<td></td>
+					
+		<form action="/trans/comit" method="POST">
+		<td><input class="btn btn-success" type="submit" value="Translate Commit"/></td>
+		</form>
+	</tr>
+</table>
+
+
+

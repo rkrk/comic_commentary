@@ -1,5 +1,5 @@
 
-#coding: US-ASCII
+#coding: utf-8
 
 require 'fileutils'
 
@@ -149,7 +149,7 @@ class Comment
 		"#{@trans_record},#{@img.to_json},#{loc_content},#{trans_content}" 
 	end
 
-# ------------------------------not done yet------------------------------------
+# ------------------------------not yet done ------------------------------------
 
 	def self.load(erb_file,css_file)
 		return false if !File.exist?(erb_file) || !File.exist?(css_file)
