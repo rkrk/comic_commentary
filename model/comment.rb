@@ -42,6 +42,8 @@ end
 
 class ImageAttr
 
+	CONTENT_HEIGHT_FIX = 40
+
 	attr_accessor :comic_name,:vol,:page
 
 	def initialize(c_name="ccct",vol=1,page="page1",width=0,height=0,suffix="png")
@@ -66,7 +68,7 @@ class ImageAttr
 		"   
 		#content{
 			font-family: 'Microsoft Yahei','Helvetica Neue','Helvetica','Arial','Lucida' 'Grande','sans-serif';
-			height: #{@height.to_i+30}px;
+			height: #{@height.to_i + CONTENT_HEIGHT_FIX}px;
 		}#comment{
 			position: absolute;
 			width: #{@width}px;

@@ -1,8 +1,11 @@
-
-<h2 class="pageTitle"> Vols List</h2>
-<div id="content">
-	<h3><%=@comic_name%></h3>
+<div class="page-header">
+	<h2>Vols List</h2>
+</div>
+<div>
+	<p><h3><%=@comic_name%></h3></p>
 	<% @vols.each do |v| %>
-		<h4><a href="/comic/<%= @comic_name %>/<%= v %>"><%= v %></a></h4>
+	<ul class="nav nav-pills nav-stacked">
+		<li><a href="/comic/<%= @comic_name %>/<%= v %>"><%= v %></a></li>
+	</ul>	
 	<% end %>
 </div>

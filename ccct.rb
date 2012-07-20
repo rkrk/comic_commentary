@@ -8,7 +8,7 @@ $LOAD_PATH.push(model_path).push(helper_path)
 require 'sinatra'
 require "sinatra/reloader"
 require 'logger'
-require 'yaml'
+# require 'yaml'
 
 require 'comment'
 require 'comic'

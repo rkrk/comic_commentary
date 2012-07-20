@@ -1,26 +1,32 @@
-<h2 class="pageTitle"> Pages List</h2>
-<div id="content">
-	<h3><%=@comic_name%> - <%=@vol%></h3>
-	
+<div class="page-header">
+	<h2> Pages List</h2>
+</div>
+<div>
+	<p><h3><%=@comic_name%> - <%=@vol%></h3></p>
+	<table>
+
+	<!-- <form class="form-horizontal"> -->
 	<% @play_list.each do |pl| %>
-	<div class="cell" style="">
-		<table cellpadding="0" cellspacing="0" border="0" width="100%">
+	<% title,from,to = pl %>
+	<!-- <label><%=title%></label> -->
+	<ul class="nav nav-pliis nav-stacked">
+		<li><a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=from%>"><%= title %></a></li>
+	</ul>
+<!-- 		<thead></thead>
+		<tbody>
 			<tr>
-				<th>title</th>
-				<th>page_from</th>
-				<th>page_to</th>
-			</tr>
-		
-			<!-- <%= pl %> -->
-			<% tilte,from,to = pl %>
-			<tr>
-				<td width="30%" valign="top" align="center">
-					<a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=from%>"><%= tilte %></a>
+				<td><%=title%></td>
+				<td>
+					<li  class="nav nav-pliis nav-stacked">
+						<a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=from%>"><%= title %></a>
+					</li>
 				</td>
-				<td width="auto" valign="middle" align="center"><%= from %></td>
-				<td width="auto" valign="middle" align="center"><%= to %></td>
 			</tr>
-		</table>
+
+		</tbody> -->
 	<% end %>
-	</div>
+	</table>
+
+<!-- 	</form> -->
+
 </div>
