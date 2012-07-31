@@ -42,7 +42,7 @@ end
 
 class ImageAttr
 
-	CONTENT_HEIGHT_FIX = 52
+	CONTENT_HEIGHT_FIX = 72
 
 	attr_accessor :comic_name,:vol,:page
 
@@ -66,7 +66,7 @@ class ImageAttr
 
 	def to_css
 		"   
-		#content{
+		#content-main{
 			height: #{@height.to_i + CONTENT_HEIGHT_FIX}px;
 		}#comment{
 			position: absolute;

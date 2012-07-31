@@ -1,0 +1,6 @@
+1.git clone git@github.com:rkrk/comic_commentary.git
+2.bundle install or bundle update
+3.ruby ccct.rb & go!
+
+
+

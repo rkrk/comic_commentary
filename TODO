@@ -20,4 +20,16 @@ bug
 3.layout style : 
  3.1 loign/注册链接拉到导航条右侧 ->done:0717
 
- 
+[init projext in Windows]
+
+[devkit]
+1. 到 http://rubyinstaller.org/downloads/ 去下载dev kit – DevKit-tdm-32-4.5.1-20101214-1400-sfx.exe
+2. 按照 http://github.com/oneclick/rubyinstaller/wiki/Development-Kit/ 安装dev kit
+主要安装步骤如下：
+如果原来系统中已经安装了旧版的dev kit, 则删除它
+下载上面提到的dev kit
+解压下载下来的文件到指定的目录，如c:/devkit。(注意：目录不能有空格)
+运行ruby dk.rb,然后按照提示分别运行ruby dk.rb init 和 ruby dk.rb install来增强ruby
+可以运行 gem install rdiscount –platform=ruby 来测试是否成功
+[eventmachine]
+gem install eventmachine --pre
