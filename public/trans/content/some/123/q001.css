@@ -1,7 +1,7 @@
    
 		#content{
 			font-family: 'Microsoft Yahei','Helvetica Neue','Helvetica','Arial','Lucida' 'Grande','sans-serif';
-			height: 1104px;
+			height: 1114px;
 		}#comment{
 			position: absolute;
 			width: 728px;
@@ -13,9 +13,18 @@
 		}
 		#comment-1 {
 			position: absolute;
-			top: 968px;
-			left: 184px;
-			font-size: 1.5em;
+			top: 960px;
+			left: 156px;
+			font-size: 1.2em;
+			text-align: left;
+			background-color:#FFF;
+			
+		}
+		#comment-2 {
+			position: absolute;
+			top: 981px;
+			left: 150px;
+			font-size: 1.2em;
 			text-align: left;
 			background-color:#FFF;
 			

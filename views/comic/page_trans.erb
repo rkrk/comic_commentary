@@ -29,12 +29,12 @@
         <a class="brand" href="#">Control Panel</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><a href="/comic/<%=@comic_name%>"><i class="icon-eject icon-white"></i> Back</a></li>
+            <li><a href="/comic/<%=@comic_name%>"><i class="icon-eject icon-white"></i> BackToTop</a></li>
             <li><a href="/comic/<%=@comic_name%>/<%=@vol%>/1"><i class="icon-fast-backward icon-white"></i> VolTop</a></li>
-            <li><a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num.to_i == 1 ? 1 : @page_num.to_i-1%>"><i class="icon-step-backward icon-white"></i> PrePage</a></li>
-            <li><a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num.to_i == @page_num_max ? @page_num_max : @page_num.to_i+1%>">NextPage <i class="icon-step-forward icon-white"></i></a></li>
+            <li><a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num.to_i == 1 ? 1 : @page_num.to_i-1%>"><i class="icon-step-backward icon-white"></i> Prev</a></li>
+            <li><a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num.to_i == @page_num_max ? @page_num_max : @page_num.to_i+1%>">Next<i class="icon-step-forward icon-white"></i></a></li>
             <li><a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num_max%>">VolEnd <i class="icon-fast-forward icon-white"></i></a></li>
-            <li><a href="#"><i class=" icon-text-height icon-white"></i></a></li>
+            <!-- <li><a href="#"><i class=" icon-text-height icon-white"></i></a></li> -->
           </ul>
         </div>
       </div>

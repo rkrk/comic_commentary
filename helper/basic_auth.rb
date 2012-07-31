@@ -26,7 +26,7 @@ helpers do
   def login
     # p  params[:pw]
     if auth_ok?(params[:id], params[:pw])
-      session[:login] = "login - #{params[:id]} "
+      session[:login_id] = "#{params[:id]}"
       redirect '/trans'
     else
       erb :login
@@ -34,12 +34,12 @@ helpers do
   end
 
   def logout
-  session.delete(:login)
+  session.delete(:login_id)
   redirect '/'
   end
 
   def need_auth
-    unless session[:login]
+    unless session[:login_id]
       erb :login
     else
       yield

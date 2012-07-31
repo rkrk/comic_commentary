@@ -3,17 +3,13 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>CccT</title>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 		<link rel="shortcut icon" href="/favicon.ico">
-	    <style type="text/css">
-	      body {
-	        padding-top: 60px;
-	        padding-bottom: 40px;
-	      }
-	    </style>
 	    <link rel="canonical" href="http://ccct.org/">
+
 	</head>
 	
 	<body class="container">
@@ -27,24 +23,31 @@
 		          <a class="brand" href="/">Comic Commentary</a>
 		          <div class="nav-collapse">
 		            <ul class="nav">
-		              <li class="active"><a href="/">Home</a></li>
-		              <li><a href="/comic">Comic List</a></li>
-		              <li><a href="/trans">Translate Job</a></li>
-		              <li><a href="/about">About</a></li>
+		            	<li class="active"><a href="/">Home</a></li>
+		            	<li><a href="/comic">Comic List</a></li>
+		            	<% if session.has_key?("login_id")  %>
+		          		<li><a href="/trans" class="">Translate Job</a></li>
+		             	<% end %>
+		             	<li><a href="/about">About</a></li>
 		            </ul>
 		          	<ul class="nav pull-right">
-		           	  <li><a href="/login">Login</a></li>
-		              <li><a href="/logout">Logout</a></li>
-		              <li><a href="/regist">Regist</a></li>
+		          		<% if session.has_key?("login_id")  %>
+		          		<li><div id="hello_user">
+		          			<%= "Hi ! #{session["login_id"]} " %>
+		          		</div>
+		          		</li>
+		          		<li><a href="/logout">Logout</a></li>
+		          		<% else %>
+		           	 	<li><a href="/login">Login</a></li>
+		             	<% end %>
+		             	<li><a href="/regist">Regist</a></li>
 		            </ul>
 		           </div>
 		        </div>
 		      </div>
 		</div>
 
-		<!-- <div class='span6 offset3' id='page_header'><a href='/home'><img src='/title.png'></a></div> -->
-
-      	<div id="content" >
+      	<div class="content" >
       		<%= yield %>
     	</div>
 
