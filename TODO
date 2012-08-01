@@ -1,19 +1,33 @@
+[TODO]
 1.在非/comic/* 页面，不显示control panel。 ->done
-1.1.play_list编辑页面->90%
- 1.1.1 将play_list编辑页面放入 /trans/pages.erb中 ->80%:0717 ->done:0718
-  
-1-2.Title编辑页面
-
+ 1.1.play_list编辑页面->90%->done
+  1.1.1 将play_list编辑页面放入 /trans/pages.erb中 ->80%:0717 ->done:0718->done
+ 1-2.Title（master-info）编辑页面
+ 
 2.在trans_detail页面，对象图片既存erb/css文件时，读入并解析
 3.erb/css文件格式改为json，通过jquery解析json文件达到与erb/css同样的效果
-4.在各个页面加广告栏
+
+4.在各个主要浏览页面加广告栏 -> done
 5.实现注册功能（提交注册信息->邮件确认->完成注册）
  5.1 基本注册功能（提交注册信息->完成注册） -> done:0717
+ 5.2 邮件确认功能待完成
+ 5.3 注册时的字段check，字段错误时的notify提示
+
+6.加入翻译preview功能
 
 10.整理数据结构
 
+11.按“权限”区分用户可浏览区域
+ 11.1 用户表->pw.txt中加权限字段：做title/vol/层次的访问控制，pages层面不控制
+      -> id,pw,permission-hash 
+      -> permission-hash : {"title-1"=>[vol-1..vol-x] .."title-x"=>[vol-1..vol-x]}
+      -> 对于匿名用户（没有login）指定可访问范围 anonymity
+      -> 对于特权用户全title访问 {"all"=>"all"}
+      -> 翻译权限 {"trans"=>"trans"}
+ 11.2 permission编辑页面
 
-bug
+
+[bug]
 
 1.comment文字的位置问题 -> done:0717
 2.错误id/pw也能login问题 -> done:0717
@@ -21,15 +35,15 @@ bug
  3.1 loign/注册链接拉到导航条右侧 ->done:0717
 
 [init projext in Windows]
-
 [devkit]
-1. 到 http://rubyinstaller.org/downloads/ 去下载dev kit – DevKit-tdm-32-4.5.1-20101214-1400-sfx.exe
-2. 按照 http://github.com/oneclick/rubyinstaller/wiki/Development-Kit/ 安装dev kit
+1. 到 http://rubyinstaller.org/downloads/ 下载dev kit - DevKit-tdm-32-4.5.1-20101214-1400-sfx.exe
+2. 安装dev kit - 按 http://github.com/oneclick/rubyinstaller/wiki/Development-Kit/
 主要安装步骤如下：
 如果原来系统中已经安装了旧版的dev kit, 则删除它
 下载上面提到的dev kit
 解压下载下来的文件到指定的目录，如c:/devkit。(注意：目录不能有空格)
-运行ruby dk.rb,然后按照提示分别运行ruby dk.rb init 和 ruby dk.rb install来增强ruby
+运行ruby dk.rb,按照提示分别运行ruby dk.rb init 和 ruby dk.rb install
 可以运行 gem install rdiscount –platform=ruby 来测试是否成功
 [eventmachine]
+windows中安装新版eventmachine有问题，用以下方法安装：
 gem install eventmachine --pre

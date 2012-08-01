@@ -46,7 +46,7 @@ helpers do
     end
   end
 
-  def regist
+  def register
     # p params[:id]
     # p params[:pw].chomp
     # p params[:pw_repeat].chomp

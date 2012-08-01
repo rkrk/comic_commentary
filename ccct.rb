@@ -209,7 +209,7 @@ get '/about' do
 	erb :about
 end
 
-#------------------------login/out , regist-----------------------------------------
+#------------------------login/out , register-----------------------------------------
 
 get '/login' do 
 	erb :login
@@ -227,14 +227,14 @@ post '/logout' do
 	logout
 end
 
-get '/regist'do
-	erb :regist
+get '/register'do
+	erb :register
 end
 
 #------------------------Comic Trans/Edit Tool-----------------------------------------
 
-post '/regist' do
-	if regist 
+post '/register' do
+	if register 
 		redirect '/login'
 	else
 		redirect back
