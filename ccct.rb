@@ -440,5 +440,88 @@ post '/trans/comit' do
 	redirect '/trans'
 end
 
+#----------------Comic Show APP for Mobile--------------------------------------------
 
+['/m','/m/home'].each do |home|
+	get home do
+		request.env.map { |e| e.to_s + "\n" }
+		erb :'/m/home',:layout=> :'/m/m_layout'
+	end
+end
+
+get '/m/comic' do
+	# request.env.map { |e| e.to_s + "\n" }
+	@comics = @@comics
+	erb :'/m/comic/comics',:layout=> :'/m/m_layout'
+end
+
+get '/m/comic/:comic_name' do 
+	# request.env.map { |e| e.to_s + "\n" }
+	@comic_name = params[:comic_name]
+	@vols = @@vols[@comic_name]
+
+	erb :'/m/comic/vols',:layout=> :'/m/m_layout'
+end	
+
+get '/m/comic/:comic_name/:vol' do 
+	# request.env.map { |e| e.to_s + "\n" }
+	@comic_name,@vol  = params[:comic_name], params[:vol]
+	hash_key = "#{@comic_name}@#{@vol}"
+
+	comic_dir = COMIC_HOME + "/" + @comic_name + "/" + @vol
+
+	@pages = @@play_list_top[hash_key][0]
+	@play_list = @@play_list_top[hash_key][1]
+
+	if @play_list.size > 0 
+		erb :'/m/comic/vol_play_list',:layout=> :'/m/m_layout'
+	else
+		erb :'/m/comic/pages',:layout=> :'/m/m_layout'
+	end 
+end	
+
+get '/m/comic/:comic_name/:vol/:page_num' do 
+	request.env.map { |e| e.to_s + "\n" }
+	@comic_name,@vol,@page_num = params[:comic_name],params[:vol],params[:page_num]
+
+	hash_key = "#{@comic_name}@#{@vol}"
+	@pages = JSON::parse(@@play_list_top[hash_key][0])
+	@play_list = @@play_list_top[hash_key][1]
+	@page_num_max = @pages.size
+
+	@page = @pages[@page_num.to_i - 1]
+
+	@comic_path = COMIC_HOME + "/" + @comic_name + "/" + @vol + "/" + @page
+	@translate_path = TRANS_HOME + "/" + @comic_name + "/" + @vol + "/" + @page
+
+	erb :'/m/comic/page_trans',:layout=> :'/m/m_layout'
+end	
+
+get '/m/about' do
+	request.env.map { |e| e.to_s + "\n" }
+	@readme = File.open('./README')
+	erb :'/m/about',:layout=>:'/m/m_layout'
+end
+
+#------------------------login/out , register for mobile--------------------------------------
+
+get '/m/login' do 
+	erb :'/m/login'
+end
+
+post '/m/login' do
+	login
+end
+
+get '/m/logout' do
+	logout
+end
+
+post '/m/logout' do
+	logout
+end
+
+get '/m/register'do
+	erb :'/m/register'
+end
 

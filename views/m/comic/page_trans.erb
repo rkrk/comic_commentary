@@ -1,0 +1,43 @@
+
+<div class="page-header">
+  <h2> TranPages List</h2>
+</div>
+
+<div class="row">
+  <div class="span10">
+    <div class="addtion-css">
+      <link rel="stylesheet" type="text/css" 
+      href="/trans/content/<%= @comic_name%>/<%= @vol%>/<%= @page %>.css">
+    </div>
+
+    <div class="trans-content">
+      <%if File.exist? (@translate_path+".erb") %>
+        <%File.open(@translate_path+".erb").each do |l|%>
+        <%= l %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="span2">
+    <div class="ad"></div>
+  </div>
+
+  <div class="control_panel navbar navbar-fixed-bottom">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">Control Panel</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><a href="/m/comic/<%=@comic_name%>"><i class="icon-eject icon-white"></i> BackToTop</a></li>
+            <li><a href="/m/comic/<%=@comic_name%>/<%=@vol%>/1"><i class="icon-fast-backward icon-white"></i> VolTop</a></li>
+            <li><a href="/m/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num.to_i == 1 ? 1 : @page_num.to_i-1%>"><i class="icon-step-backward icon-white"></i> Prev</a></li>
+            <li><a href="/m/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num.to_i == @page_num_max ? @page_num_max : @page_num.to_i+1%>">Next<i class="icon-step-forward icon-white"></i></a></li>
+            <li><a href="/m/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num_max%>">VolEnd <i class="icon-fast-forward icon-white"></i></a></li>
+            <!-- <li><a href="#"><i class=" icon-text-height icon-white"></i></a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
