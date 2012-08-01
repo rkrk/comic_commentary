@@ -8,7 +8,7 @@ source :rubygems
 # gem 'rmagick'
 # gem 'prawn'
 # gem 'readis'
-gem 'sinatra'
+gem 'sinatra', "~> 1.3.2"
 gem 'sinatra-contrib'
 
 group :test, :development do
