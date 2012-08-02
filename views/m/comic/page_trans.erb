@@ -23,7 +23,8 @@
 </div>
 
 <div data-role="footer" class="ui-bar">
-  <a href="#" data-role="button" data-icon="plus">Vol-Home</a>
-  <a href="#" data-role="button" data-icon="arrow-u">Prev</a>
-  <a href="#" data-role="button" data-icon="arrow-d">Next</a>
+  <a href="/m/comic/<%=@comic_name%>" data-role="button" data-icon="home" rel="external">Top</a>
+  <a href="/m/comic/<%=@comic_name%>/<%=@vol%>/1" data-role="button" data-icon="arrow-u" rel="external">VolTop</a>
+  <a href="/m/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num.to_i == 1 ? 1 : @page_num.to_i-1%>" data-role="button" data-icon="arrow-l" rel="external" data-prefetch>Prev</a>
+  <a href="/m/comic/<%=@comic_name%>/<%=@vol%>/<%=@page_num.to_i == @page_num_max ? @page_num_max : @page_num.to_i+1%>"  data-role="button" data-icon="arrow-r" rel="external" data-prefetch>Next</a>
 </div>
