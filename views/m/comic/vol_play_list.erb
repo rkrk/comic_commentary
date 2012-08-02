@@ -1,32 +1,28 @@
-<div class="page-header">
+<div class="contentHeader">
 	<h2> Pages List</h2>
 </div>
 <div>
 	<p><h3><%=@comic_name%> - <%=@vol%></h3></p>
-	<table>
 
 	<!-- <form class="form-horizontal"> -->
 	<% @play_list.each do |pl| %>
 	<% title,from,to = pl %>
 	<!-- <label><%=title%></label> -->
-	<ul class="nav nav-pliis nav-stacked">
-		<li><a href="/m/comic/<%=@comic_name%>/<%=@vol%>/<%=from%>"><%= title %></a></li>
+	<ul data-role="listview" class="ui-listview">
+		<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c">
+
+			<div class="ui-btn-inner ui-li">
+				<div class="ui-btn-text">
+					<a href="/m/comic/<%=@comic_name%>/<%=@vol%>/<%=from%>" class="ui-link-inherit">
+						<h3 class="ui-li-heading"><%= title %></h3>
+					</a>
+				</div>
+				<span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
+			</div>
+		</li>
 	</ul>
-<!-- 		<thead></thead>
-		<tbody>
-			<tr>
-				<td><%=title%></td>
-				<td>
-					<li  class="nav nav-pliis nav-stacked">
-						<a href="/comic/<%=@comic_name%>/<%=@vol%>/<%=from%>"><%= title %></a>
-					</li>
-				</td>
-			</tr>
 
-		</tbody> -->
 	<% end %>
-	</table>
 
-<!-- 	</form> -->
 
 </div>

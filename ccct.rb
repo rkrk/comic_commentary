@@ -444,8 +444,10 @@ end
 
 ['/m','/m/home'].each do |home|
 	get home do
-		request.env.map { |e| e.to_s + "\n" }
-		erb :'/m/home',:layout=> :'/m/m_layout'
+		# request.env.map { |e| e.to_s + "\n" }
+		# erb :'/m/home',:layout=> :'/m/m_layout'
+		@comics = @@comics
+		erb :'/m/comic/comics',:layout=> :'/m/m_layout'
 	end
 end
 
@@ -460,7 +462,7 @@ get '/m/comic/:comic_name' do
 	@comic_name = params[:comic_name]
 	@vols = @@vols[@comic_name]
 
-	erb :'/m/comic/vols',:layout=> :'/m/m_layout'
+	erb :'/m/comic/vols',:layout=>:'/m/m_layout'
 end	
 
 get '/m/comic/:comic_name/:vol' do 
@@ -506,7 +508,7 @@ end
 #------------------------login/out , register for mobile--------------------------------------
 
 get '/m/login' do 
-	erb :'/m/login'
+	erb :'/m/login',:layout=>:'/m/m_layout'
 end
 
 post '/m/login' do

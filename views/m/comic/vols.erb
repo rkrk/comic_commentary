@@ -1,11 +1,21 @@
-<div class="page-header">
+<div class="contentHeader">
 	<h2>Vols List</h2>
 </div>
 <div>
 	<p><h3><%=@comic_name%></h3></p>
 	<% @vols.each do |v| %>
-	<ul class="nav nav-pills nav-stacked">
-		<li><a href="/m/comic/<%= @comic_name %>/<%= v %>"><%= v %></a></li>
+	<ul data-role="listview" class="ui-listview">
+		<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c">
+
+			<div class="ui-btn-inner ui-li">
+				<div class="ui-btn-text">
+					<a href="/m/comic/<%= @comic_name %>/<%= v %>" class="ui-link-inherit">
+						<h3 class="ui-li-heading"><%= v %></h3>
+					</a>
+				</div>
+				<span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
+			</div>
+		</li>
 	</ul>	
 	<% end %>
 </div>
