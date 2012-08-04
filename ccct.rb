@@ -5,24 +5,25 @@ model_path = runtime_path+ '/model'
 helper_path = runtime_path + '/helper'
 $LOAD_PATH.push(model_path).push(helper_path)
 
+
 require 'sinatra'
 require "sinatra/reloader"
 require 'logger'
 # require 'yaml'
 
-require 'comment'
-require 'comic'
+require './model/comment'
+require './model/comic'
 
-require 'basic_auth'
+require './helper/basic_auth'
 
 #------------------------define Constants/Variables ----------------------------------------
 
-CCCT_HOME = runtime_path
+CCCT_HOME = "/home/rk/my_web/comic_commentary" 
 
-COMIC_HOME = runtime_path + '/public/trans/pic'
-TRANS_HOME = runtime_path + '/public/trans/content'
+COMIC_HOME = CCCT_HOME + '/public/trans/pic'
+TRANS_HOME = CCCT_HOME + '/public/trans/content'
 
-PLAY_LIST_HOME = runtime_path + '/public/trans/play_list'
+PLAY_LIST_HOME = CCCT_HOME + '/public/trans/play_list'
 
 @@log = Logger.new("#{CCCT_HOME}/log/ccct.log", 'daily')
 # @@log = Logger.new(STDOUT)
