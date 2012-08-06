@@ -1,11 +1,11 @@
 <div class="page-header">
-	<h2> Translate Job - Comics > Vols </h2>
+    <h2> Translate Job - Comics > Vols </h2>
 </div>
 <div class="">
-	<p><h3><%=@comic_name%></h3></p>
-	<% @vols.each do |v| %>
-	<ul class="nav nav-pills nav-stacked">
-		<li><a href="/trans/<%= @comic_name %>/<%= v %>"><%= v %></a><br></li>
-	</ul>
-	<% end %>
+    <p><h3><%=@comic_name%></h3></p>
+    <% @vols.each do |v| %>
+    <ul class="nav nav-pills nav-stacked">
+        <li><a href="/trans/<%= @comic_name %>/<%= v %>"><%= v %></a><br></li>
+    </ul>
+    <% end %>
 </div>

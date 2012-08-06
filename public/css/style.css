@@ -4,24 +4,24 @@ body {
 }
 
 #hello_user{
-	float: none;
-	padding: 9px 10px 11px;
-	line-height: 19px;
-	color: white;
-	font-size: 1.1em;
-	font-weight: 700; 
-	text-shadow: 0 -1px 0 
-	rgba(0, 0, 0, 0)
+    float: none;
+    padding: 9px 10px 11px;
+    line-height: 19px;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 700; 
+    text-shadow: 0 -1px 0 
+    rgba(0, 0, 0, 0)
 }
 
 .cell {
-	padding: 10px;
-	font-size: 12px;
-	line-height: 120%;
-	text-align: left;
-	border-bottom: 1px solid #E2E2E2;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 120%;
+    text-align: left;
+    border-bottom: 1px solid #E2E2E2;
 }
 
 .content{
-	font-family: 'Microsoft Yahei',,'Helvetica Neue','Helvetica','Arial','Lucida' 'Grande','sans-serif';
+    font-family: 'Microsoft Yahei',,'Helvetica Neue','Helvetica','Arial','Lucida' 'Grande','sans-serif';
 }

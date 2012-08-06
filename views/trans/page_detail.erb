@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h2> Translate Job </h2>
+    <h2> Translate Job </h2>
 </div>
 <!-- <div class="row" > -->
 
@@ -14,20 +14,20 @@
 
 <div class="row">
 <table class="table table-striped table-bordered table-condensed">
-	<tr> 
-		<td> Img attr</td>
-		<td colspan=3> <%= @@trans_a_page.img.to_s %></td>
-	</tr>
-	<% @@trans_a_page.trans_record.each_index do |i|%>
-	<tr>
-		<td> Trans record </td> 
-		<td> <%= i+1 %> </td> 
-		<td> <%= @@trans_a_page.trans_record[i].to_s %> </td>
-		<td> 
-			<a href="/trans/<%=@comic_name%>/<%=@vol%>/<%=@page%>/remove_record/<%=i%>"><i class="icon-remove"></i></a>
-		</td>
-	</tr>
-	<% end %>
+    <tr> 
+        <td> Img attr</td>
+        <td colspan=3> <%= @@trans_a_page.img.to_s %></td>
+    </tr>
+    <% @@trans_a_page.trans_record.each_index do |i|%>
+    <tr>
+        <td> Trans record </td> 
+        <td> <%= i+1 %> </td> 
+        <td> <%= @@trans_a_page.trans_record[i].to_s %> </td>
+        <td> 
+            <a href="/trans/<%=@comic_name%>/<%=@vol%>/<%=@page%>/remove_record/<%=i%>"><i class="icon-remove"></i></a>
+        </td>
+    </tr>
+    <% end %>
 </table>
 </div>
 
@@ -37,114 +37,114 @@
 
 <div class="row">
 <table id="image_attr" class="table table-striped table-bordered table-condensed">
-	<form action='/trans/set/img' method="POST">
-	<tr>
-		<td>Comic Name</td>
-		<td>Vol</td>
-		<td>Pic-name</td>
-		<td>Width</td>
-		<td>Height</td>
-		<td>Suffix</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td><input class="span3" name="comic_name" type="text" value="<%=@comic_name%>"> </td>
-		<td><input class="span1" name="vol" type="text"value="<%=@vol%>"> </td>
-		<td><input class="span2" name="page" type="text" value="<%=@page%>"> </td>
-		<td><input class="span1" id="pic-width" name="width" type="text" value=""> </td>
-		<td><input class="span1" id="pic-height" name="height" type="text" value=""> </td>
-		<td><input class="span1" name="suffix" type="text" value="png"> </td>
-		<td><input class="span2 btn btn-primary" type="submit" value="SetImg"></td>
-	</tr>
-	</form>
+    <form action='/trans/set/img' method="POST">
+    <tr>
+        <td>Comic Name</td>
+        <td>Vol</td>
+        <td>Pic-name</td>
+        <td>Width</td>
+        <td>Height</td>
+        <td>Suffix</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><input class="span3" name="comic_name" type="text" value="<%=@comic_name%>"> </td>
+        <td><input class="span1" name="vol" type="text"value="<%=@vol%>"> </td>
+        <td><input class="span2" name="page" type="text" value="<%=@page%>"> </td>
+        <td><input class="span1" id="pic-width" name="width" type="text" value=""> </td>
+        <td><input class="span1" id="pic-height" name="height" type="text" value=""> </td>
+        <td><input class="span1" name="suffix" type="text" value="png"> </td>
+        <td><input class="span2 btn btn-primary" type="submit" value="SetImg"></td>
+    </tr>
+    </form>
 </table>
 
 
 <table id="coodinate-fix" class=" table-striped table-bordered table-condensed">
-	<tr>
-		<td>cood-x-fix</td> 
-		<td>cood-y-fix</td> 
-		<td></td> 
-	</tr>
-	<tr>
-		<td><input class="span1" id="cood-x" name="x" type="text" value=""></td>
-		<td><input class="span1" id="cood-y" name="y"type="text" value=""></td>
-		<td>
-			<div class="btn-group">
-				<button id="copy-to-origin" class="btn btn-primary">Copy To Origin</button>
-				<button id="fix-coordinate" class="btn btn-primary">Fix Coordinate</button>
-			</div>
-		</td>
-	</tr>
+    <tr>
+        <td>cood-x-fix</td> 
+        <td>cood-y-fix</td> 
+        <td></td> 
+    </tr>
+    <tr>
+        <td><input class="span1" id="cood-x" name="x" type="text" value=""></td>
+        <td><input class="span1" id="cood-y" name="y"type="text" value=""></td>
+        <td>
+            <div class="btn-group">
+                <button id="copy-to-origin" class="btn btn-primary">Copy To Origin</button>
+                <button id="fix-coordinate" class="btn btn-primary">Fix Coordinate</button>
+            </div>
+        </td>
+    </tr>
 </table>
 <br>
 
 
 <table id="trans_record_form" class="table table-striped table-bordered table-condensed">
-	<form action='/trans/add/transrecord' method="POST" >
-	<tr>
-		<td>Translate-Content</td>
-		<td>Font-size</td>
-		<td>X</td>
-		<td>Y</td>
-		<td>text_align</td>
-		<td>text_aspect</td>
-	</tr>
+    <form action='/trans/add/transrecord' method="POST" >
+    <tr>
+        <td>Translate-Content</td>
+        <td>Font-size</td>
+        <td>X</td>
+        <td>Y</td>
+        <td>text_align</td>
+        <td>text_aspect</td>
+    </tr>
 
-	<tr>
-		<td></td>
-		<td></td>
-		<td>
-			<input class="span1" id="origin-x" name="origin_x" type="text" 
-			value="<%=@origin_x%>">
-		</td>
-		<td>
-			<input class="span1" id="origin-y" name="origin_y"type="text" 
-			value="<%=@origin_y%>">
-		</td>
-		<td></td>
-		<td></td>
-	</tr>
-	<tr id="trans_record">
-		<td><textarea id="textarea"  class="span4" rows="2" name="content" type="text" value=""></textarea></td>
-		<td><input class="span1" name="font_size" type="text" value="1.2"> </td>
-		<td><input class="span1" id="cood-x-fix" name="x_fix" type="text" value=""></td>
-		<td><input class="span1" id="cood-y-fix" name="y_fix" type="text" value=""></td>
-		<td>
-			<!-- <input class="span1" name="text_align" type="text" value="left">  -->
-			<select class="span2" name="text_align">
-				<option>left</option>
-				<option>center</option>
-				<option>right</option>
-			</select>
-		</td>
-		<td>
-			<input type="radio" name="aspect" value="horizon" deault/>horizon
-			<input type="radio" name="aspect" value="vertical" /> vertical
-		</td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><input class="btn btn-primary" type="submit" value="Save TransRecord" > </td>
-	</tr>
-	</form>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>
+            <input class="span1" id="origin-x" name="origin_x" type="text" 
+            value="<%=@origin_x%>">
+        </td>
+        <td>
+            <input class="span1" id="origin-y" name="origin_y"type="text" 
+            value="<%=@origin_y%>">
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr id="trans_record">
+        <td><textarea id="textarea"  class="span4" rows="2" name="content" type="text" value=""></textarea></td>
+        <td><input class="span1" name="font_size" type="text" value="1.2"> </td>
+        <td><input class="span1" id="cood-x-fix" name="x_fix" type="text" value=""></td>
+        <td><input class="span1" id="cood-y-fix" name="y_fix" type="text" value=""></td>
+        <td>
+            <!-- <input class="span1" name="text_align" type="text" value="left">  -->
+            <select class="span2" name="text_align">
+                <option>left</option>
+                <option>center</option>
+                <option>right</option>
+            </select>
+        </td>
+        <td>
+            <input type="radio" name="aspect" value="horizon" deault/>horizon
+            <input type="radio" name="aspect" value="vertical" /> vertical
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input class="btn btn-primary" type="submit" value="Save TransRecord" > </td>
+    </tr>
+    </form>
 </table>
 
 <table class="table" >
-	<tr> 
-		<form action="/trans/clear" method="POST">  
-		<td><input class="span2 btn btn-warning" span="1" type="submit" value="Clear"></td>  
-		</form>
-		<td class="span4"></td>
-		<td class="span4"></td>
-		<form action="/trans/save" method="POST">
-		<td><input class="span2 btn btn-success" span="" type="submit" value="Save"></td>
-		</form>
-	</tr>
+    <tr> 
+        <form action="/trans/clear" method="POST">  
+        <td><input class="span2 btn btn-warning" span="1" type="submit" value="Clear"></td>  
+        </form>
+        <td class="span4"></td>
+        <td class="span4"></td>
+        <form action="/trans/save" method="POST">
+        <td><input class="span2 btn btn-success" span="" type="submit" value="Save"></td>
+        </form>
+    </tr>
 </table>
 </div>
 
@@ -163,37 +163,37 @@
     <script src="/js/bootstrap-typeahead.js"></script> -->
 <script type="text/javascript">
 $(document).ready(function(){
-	$(document).mousemove(function(e){
-	$('#status').html(e.pageX +', '+ e.pageY);
-	}); 
+    $(document).mousemove(function(e){
+    $('#status').html(e.pageX +', '+ e.pageY);
+    }); 
 })
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
    $("#image").click(function(e){
-   		$('#cood-x').val(e.pageX);
-   		$('#cood-y').val(e.pageY);
-   		// $('#cood-y').value(e.pageY);
+        $('#cood-x').val(e.pageX);
+        $('#cood-y').val(e.pageY);
+        // $('#cood-y').value(e.pageY);
    }); 
 })
 </script>
 <script type="text/javascript">
-	$("#copy-to-origin").click(function(){
-		$("#origin-x").val($("#cood-x").val());
-		$("#origin-y").val($("#cood-y").val());
-	})
+    $("#copy-to-origin").click(function(){
+        $("#origin-x").val($("#cood-x").val());
+        $("#origin-y").val($("#cood-y").val());
+    })
 
 </script>
 <script type="text/javascript">
     $("#fix-coordinate").click(function () {
-    	var x = $("#cood-x").val()-$("#origin-x").val();
-    	var y = $("#cood-y").val()-$("#origin-y").val();
-    	$("#cood-x-fix").val(x);
-		$("#cood-y-fix").val(y);
+        var x = $("#cood-x").val()-$("#origin-x").val();
+        var y = $("#cood-y").val()-$("#origin-y").val();
+        $("#cood-x-fix").val(x);
+        $("#cood-y-fix").val(y);
     });
 </script>
 <script type="text/javascript">
-	$('#pic-width').val($('img').width());
-	$('#pic-height').val($('img').height());
+    $('#pic-width').val($('img').width());
+    $('#pic-height').val($('img').height());
 </script>
 
